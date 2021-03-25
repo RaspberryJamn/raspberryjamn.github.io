@@ -1,9 +1,15 @@
 <html>
     <head>
         <script src="https://cdn.jsdelivr.net/npm/@runwayml/hosted-models@latest/dist/hosted-models.js"></script>
-        <title>KurtisBo, it sucks</title>
+        <title>KurtisBot, it sucks</title>
     </head>
-    <style>ul {white-space: pre-wrap;}</style>
+    <style>
+      ul {white-space: pre-wrap;}
+      #wrapper, img{
+        width: 100%;
+        height:100%;
+      }
+    </style>
     <body>
         <script>
             function addToList(txt_in) {
@@ -44,6 +50,10 @@
             }
             window.onload=fetchKurtis()
         </script>
+        <div id="wrapper">
+            <img src="http://lorempixel.com/200/200"/>
+        </div>
+
         <p>Kurtis Responses</p>
         <!--<input type="text" id="seedText" value="KURTIS">-->
         <ul id = "list"></ul>
