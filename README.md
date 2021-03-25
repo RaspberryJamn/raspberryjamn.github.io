@@ -1,2 +1,2 @@
-# raspbrryjamn.github.io
+# raspberryjamn.github.io
 Sibling wanted a thing
