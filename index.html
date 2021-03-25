@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/@runwayml/hosted-models@latest/dist/hosted-models.js"></script>
+        <title>KurtisBot 22, don't get too excited</title>
+    </head>
+    <style>ul {white-space: pre-wrap;}</style>
+    <body>
+        <script>
+            function addToList(txt_in) {
+              var ul = document.getElementById("list");
+              var li = document.createElement("li");
+              li.appendChild(document.createTextNode(txt_in));
+              ul.appendChild(li);
+            }
+            function randomIntFromInterval(min, max) { // min and max included 
+              return Math.floor(Math.random() * (max - min + 1) + min);
+            }
+            function doNothingIGuess(passval) {
+              return passval
+            }
+            function fetchKurtis() {
+              const inputs = {
+                "prompt": "Hi there welcome to my chan",//document.getElementById("seedText").value,
+                "max_characters": 2048,
+                "top_p": 0.5,
+                "seed": randomIntFromInterval(0, 10000)
+              };
+              fetch("https://kurt-script-7f0237c5.hosted-models.runwayml.cloud/v1/query", {
+                method: "POST",
+                headers: {
+                  "Accept": "application/json",
+                  "Content-Type": "application/json",
+                  "Authorization": "Bearer Ho2H5BqShZkCzdtOCurXBA==", // Replace <token> with your Hosted Models's authorization token
+                },
+                body: JSON.stringify(inputs)
+              })
+              .then(response => response.json())
+              .then(outputs => {
+                const { generated_text, encountered_end } = outputs;
+                addToList(generated_text);
+                console.log(inputs, outputs);
+                fetchKurtis()
+              });
+            }
+            window.onload=fetchKurtis()
+        </script>
+        <p>Kurtis Responses</p>
+        <!--<input type="text" id="seedText" value="KURTIS">-->
+        <ul id = "list"></ul>
+    </body>
+</html>
